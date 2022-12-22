@@ -42,6 +42,8 @@ function onDataReceived(text) {
         list();
     } else if (text.trim().split(" ")[0] === "add") {
         add(text);
+    } else if (text.trim().split(" ")[0] === "remove") {
+        remove(text);
     } else {
         unknownCommand(text);
     }
@@ -103,5 +105,20 @@ function add(text) {
         console.log("Please add a task");
     }
 }
+function remove(text) {
+    if (text.trim().split(" ")[1]) {
+        var n = text.trim().split(" ")[1];
+        for (let i = 0; i < tasks.length; i++) {
+            if (i == n - 1) {
+                tasks.splice(i, 1);
+                console.log(`task ${n} removed`);
+            }
+        }
+    } else {
+        tasks.pop();
+        console.log("last task removed");
+    }
+}
+
 // The following line starts the application
 startApp("Ahmad Ghazzi");
