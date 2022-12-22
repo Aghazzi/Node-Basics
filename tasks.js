@@ -93,7 +93,6 @@ function list() {
         console.log(`${index + 1}:${task}`);
     });
 }
-var tasks = [];
 function add(text) {
     var task = text.trim().split(" ");
     task.shift();
@@ -108,11 +107,15 @@ function add(text) {
 function remove(text) {
     if (text.trim().split(" ")[1]) {
         var n = text.trim().split(" ")[1];
+        var b = tasks.length;
         for (let i = 0; i < tasks.length; i++) {
             if (i == n - 1) {
                 tasks.splice(i, 1);
                 console.log(`task ${n} removed`);
             }
+        }
+        if (b === tasks.length) {
+            console.log(`task ${n} does not exist`);
         }
     } else {
         tasks.pop();
