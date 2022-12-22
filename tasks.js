@@ -65,7 +65,7 @@ function unknownCommand(c) {
 
 function help() {
     console.log(
-        "the list of commands :\n hello + add additional information\n exit\n quit"
+        "the list of commands :\n hello + add additional information\n exit\n quit\n list (to list the added tasks)\n add (to add a new task to the list)\n remove (to remove the last task)\n remove + (number): to remove the specified task"
     );
 }
 /**
