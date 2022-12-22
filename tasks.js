@@ -34,7 +34,7 @@ function startApp(name){
  * @returns {void}
  */
 function onDataReceived(text) {
-  if (text === 'quit\n') {
+  if (text === 'quit\n'|| 'exit\n') {
     quit();
   }
   else if(text === 'hello\n'){
@@ -56,7 +56,7 @@ function onDataReceived(text) {
 function unknownCommand(c){
   console.log('unknown command: "'+c.trim()+'"')
 }
-
+		
 
 /**
  * Says hello
