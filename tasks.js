@@ -40,6 +40,8 @@ function onDataReceived(text) {
         help();
     } else if (text === "list\n") {
         list();
+    } else if (text.trim().split(" ")[0] === "add") {
+        add(text);
     } else {
         unknownCommand(text);
     }
@@ -89,6 +91,17 @@ function list() {
         console.log(`${index + 1}:${task}`);
     });
 }
-
+var tasks = [];
+function add(text) {
+    var task = text.trim().split(" ");
+    task.shift();
+    task = task.join(" ");
+    if (task.trim()) {
+        tasks.push(task);
+        console.log(`task added ${task}`);
+    } else {
+        console.log("Please add a task");
+    }
+}
 // The following line starts the application
 startApp("Ahmad Ghazzi");

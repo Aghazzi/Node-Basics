@@ -17,7 +17,7 @@ Should add two tasks, "buy bread" and "do the exercise".
 To list those tasks, we'd do:
 
 ```sh
-> list
+> list	
 1 - [ ] buy bread
 2 - [ ] do the exercises
 ```
