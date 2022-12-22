@@ -44,6 +44,8 @@ function onDataReceived(text) {
         add(text);
     } else if (text.trim().split(" ")[0] === "remove") {
         remove(text);
+    } else if (text.trim().split(" ")[0] === "edit") {
+        edit(text);
     } else {
         unknownCommand(text);
     }
@@ -122,6 +124,34 @@ function remove(text) {
         console.log("last task removed");
     }
 }
-
+function edit(text) {
+    var task = text.trim().split(" ");
+    task.shift();
+    if (isNaN(Number(task[0]))) {
+        task = task.join(" ");
+        if (task.trim()) {
+            tasks[tasks.length - 1] = task;
+            console.log(`task edited to ${task}`);
+            list();
+        } else {
+            console.log("Please edit an existing task");
+        }
+    } else {
+        let n = Number(task[0]);
+        task.shift();
+        task = task.join(" ");
+        if (task.trim()) {
+            if (n <= tasks.length) {
+                tasks[n - 1] = task;
+                console.log(`task ${n} is edited to ${task}`);
+                list();
+            } else {
+                console.log("number of task does not exist");
+            }
+        } else {
+            console.log("Please edit an existing task");
+        }
+    }
+}
 // The following line starts the application
 startApp("Ahmad Ghazzi");
