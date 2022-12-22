@@ -59,6 +59,12 @@ function onDataReceived(text) {
 function unknownCommand(c){
   console.log('unknown command: "'+c.trim()+'"')
 }
+
+
+//  Says help
+//  This function is supposed to give you all the lists of the commands that exists
+
+
 function help(){
   console.log('the list of commands :\n hello\n exit\n quit')
 }
