@@ -89,10 +89,31 @@ function quit() {
     console.log("Quitting now, goodbye!");
     process.exit();
 }
-var tasks = ["attendance", "pull", "commit", "push"];
+var tasks = [
+    {
+        task: "attendance",
+        status: true,
+    },
+    {
+        task: "kill tareq",
+        status: true,
+    },
+    {
+        task: "batata",
+        status: false,
+    },
+    {
+        task: "revive tareq",
+        status: false,
+    },
+];
 function list() {
-    tasks.map((task, index) => {
-        console.log(`${index + 1}:${task}`);
+    tasks.map((g, index) => {
+        if (g.status) {
+            console.log(`${index + 1} - [✔] ${g.task}`);
+        } else {
+            console.log(`${index + 1} - [ ] ${g.task}`);
+        }
     });
 }
 function add(text) {
@@ -100,7 +121,11 @@ function add(text) {
     task.shift();
     task = task.join(" ");
     if (task.trim()) {
-        tasks.push(task);
+        let g = {
+            task: task.trim(),
+            status: false,
+        };
+        tasks.push(g);
         console.log(`task added ${task}`);
     } else {
         console.log("Please add a task");
@@ -130,7 +155,7 @@ function edit(text) {
     if (isNaN(Number(task[0]))) {
         task = task.join(" ");
         if (task.trim()) {
-            tasks[tasks.length - 1] = task;
+            tasks[tasks.length - 1].task = task;
             console.log(`task edited to ${task}`);
             list();
         } else {
@@ -142,7 +167,7 @@ function edit(text) {
         task = task.join(" ");
         if (task.trim()) {
             if (n <= tasks.length) {
-                tasks[n - 1] = task;
+                tasks[n - 1].task = task;
                 console.log(`task ${n} is edited to ${task}`);
                 list();
             } else {
@@ -153,5 +178,6 @@ function edit(text) {
         }
     }
 }
+
 // The following line starts the application
 startApp("Ahmad Ghazzi");
