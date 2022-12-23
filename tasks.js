@@ -90,27 +90,22 @@ function hello(n) {
  * @returns {void}
  */
 function quit() {
+    let fs = require("fs");
+    let data = JSON.stringify(objList);
+    try {
+      fs.writeFileSync("./database.json", data);
+      console.log(`Saving changes...`)
+    } catch (error) {
+      console.error(error);
+    }
     console.log("Quitting now, goodbye!");
     process.exit();
 }
-var tasks = [
-    {
-        task: "attendance",
-        status: true,
-    },
-    {
-        task: "kill tareq",
-        status: true,
-    },
-    {
-        task: "batata",
-        status: false,
-    },
-    {
-        task: "revive tareq",
-        status: false,
-    },
-];
+
+let fs = require("fs");
+let data = fs.readFileSync("database.json");
+let objList = JSON.parse(data);
+let tasks = objList.tasks;
 
 // FUNCTION list it lists all the tasks you have
 
