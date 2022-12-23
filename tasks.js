@@ -71,7 +71,7 @@ function unknownCommand(c) {
 
 function help() {
     console.log(
-        "the list of commands :\n hello + add additional information\n exit\n quit\n list (to list the added tasks)\n add (to add a new task to the list)\n remove (to remove the last task)\n remove + (number): to remove the specified task"
+        "the list of commands :\n hello + add additional information\n exit: to exit the app\n quit: to quit the app\n list (to list the added tasks)\n add (to add a new task to the list)\n edit + (number of the task): will let you edit the task you want\n remove (to remove the last task)\n remove + (number of the task): to remove the specified task\n check + (number of the task): will let you check the task you want\n uncheck + (number of the task): will allow you to uncheck the task you want"
     );
 }
 /**
@@ -112,7 +112,7 @@ var tasks = [
     },
 ];
 
-// FUNCTION list it lists all the tasks you have 
+// FUNCTION list it lists all the tasks you have
 
 function list() {
     tasks.map((g, index) => {
@@ -142,7 +142,7 @@ function add(text) {
     }
 }
 
-// FUNCTION REMOVE will remove tasks from you existing list 
+// FUNCTION REMOVE will remove tasks from you existing list
 
 function remove(text) {
     if (text.trim().split(" ")[1]) {
@@ -163,7 +163,7 @@ function remove(text) {
     }
 }
 
-// FUNCTION EDIT will edit tasks in your current list 
+// FUNCTION EDIT will edit tasks in your current list
 
 function edit(text) {
     var task = text.trim().split(" ");
@@ -195,7 +195,7 @@ function edit(text) {
     }
 }
 
-// FUNCTION CHECK will allow you to check the task you want in your list 
+// FUNCTION CHECK will allow you to check the task you want in your list
 
 function check(text) {
     var task = text.trim().split(" ");
@@ -210,7 +210,7 @@ function check(text) {
     }
 }
 
-// FUNCTION UNCHECK will allow you to uncheck tasks from you current list 
+// FUNCTION UNCHECK will allow you to uncheck tasks from you current list
 
 function uncheck(text) {
     var task = text.trim().split(" ");
