@@ -102,12 +102,21 @@ function quit() {
     process.exit();
 }
 
+let savefile;
+if (process.argv[2] == null) {
+    savefile = "database.json";
+} else {
+    savefile = process.argv[2];
+    console.log(savefile)
+}
+
 var tasks;
 const fs = require("fs");
 try {
     let data = fs.readFileSync(savefile);
     var objList = JSON.parse(data);
 } catch (e) {
+    console.error(e)
     console.log(`this file is not present, we will create it!`);
 }
 if (objList !== undefined) {
@@ -117,12 +126,7 @@ if (objList !== undefined) {
     tasks = objList.tasks;
 }
 
-let savefile;
-if (process.argv[2] == null) {
-    savefile = "database.json";
-} else {
-    savefile = process.argv[2];
-}
+
 
 // FUNCTION list it lists all the tasks you have
 

@@ -1,7 +1,1 @@
-{
-    "tasks": [
-        { "task": "hello", "status": true },
-        { "task": "bye", "status": false },
-        { "task": "<3", "status": true }
-    ]
-}
+{"tasks":[{"task":"hello","status":true},{"task":"bye","status":false},{"task":"<3","status":true}]}
