@@ -46,6 +46,10 @@ function onDataReceived(text) {
         remove(text);
     } else if (text.trim().split(" ")[0] === "edit") {
         edit(text);
+    } else if (text.trim().split(" ")[0] === "check") {
+        check(text);
+    } else if (text.trim().split(" ")[0] === "uncheck") {
+        uncheck(text);
     } else {
         unknownCommand(text);
     }
@@ -107,6 +111,9 @@ var tasks = [
         status: false,
     },
 ];
+
+// FUNCTION list it lists all the tasks you have 
+
 function list() {
     tasks.map((g, index) => {
         if (g.status) {
@@ -116,6 +123,9 @@ function list() {
         }
     });
 }
+
+// FUNCTION ADD will add tasks to your existing list
+
 function add(text) {
     var task = text.trim().split(" ");
     task.shift();
@@ -131,6 +141,9 @@ function add(text) {
         console.log("Please add a task");
     }
 }
+
+// FUNCTION REMOVE will remove tasks from you existing list 
+
 function remove(text) {
     if (text.trim().split(" ")[1]) {
         var n = text.trim().split(" ")[1];
@@ -149,6 +162,9 @@ function remove(text) {
         console.log("last task removed");
     }
 }
+
+// FUNCTION EDIT will edit tasks in your current list 
+
 function edit(text) {
     var task = text.trim().split(" ");
     task.shift();
@@ -179,5 +195,36 @@ function edit(text) {
     }
 }
 
+// FUNCTION CHECK will allow you to check the task you want in your list 
+
+function check(text) {
+    var task = text.trim().split(" ");
+    task.shift();
+    if (isNaN(Number(task[0]))) {
+        console.log("Please enter the number of the task you'd loke to check");
+    } else {
+        let n = Number(task[0]);
+        tasks[n - 1].status = true;
+        console.log(`Checked task ${n}`);
+        list();
+    }
+}
+
+// FUNCTION UNCHECK will allow you to uncheck tasks from you current list 
+
+function uncheck(text) {
+    var task = text.trim().split(" ");
+    task.shift();
+    if (isNaN(Number(task[0]))) {
+        console.log(
+            "Please enter the number of the task you'd like to uncheck"
+        );
+    } else {
+        let n = Number(task[0]);
+        tasks[n - 1].status = false;
+        console.log(`Task ${n} unchecked`);
+        list();
+    }
+}
 // The following line starts the application
 startApp("Ahmad Ghazzi");
