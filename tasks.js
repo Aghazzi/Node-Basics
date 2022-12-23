@@ -126,7 +126,7 @@ function add(text) {
             status: false,
         };
         tasks.push(g);
-        console.log(`task added ${task}`);
+        console.log(`${task} task added`);
     } else {
         console.log("Please add a task");
     }
