@@ -93,19 +93,36 @@ function quit() {
     let fs = require("fs");
     let data = JSON.stringify(objList);
     try {
-      fs.writeFileSync("./database.json", data);
-      console.log(`Saving changes...`)
+        fs.writeFileSync(savefile, data);
+        console.log(`Saving changes...`);
     } catch (error) {
-      console.error(error);
+        console.error(error);
     }
     console.log("Quitting now, goodbye!");
     process.exit();
 }
 
-let fs = require("fs");
-let data = fs.readFileSync("database.json");
-let objList = JSON.parse(data);
-let tasks = objList.tasks;
+var tasks;
+const fs = require("fs");
+try {
+    let data = fs.readFileSync(savefile);
+    var objList = JSON.parse(data);
+} catch (e) {
+    console.log(`this file is not present, we will create it!`);
+}
+if (objList !== undefined) {
+    tasks = objList.tasks;
+} else {
+    objList = { tasks: [] };
+    tasks = objList.tasks;
+}
+
+let savefile;
+if (process.argv[2] == null) {
+    savefile = "database.json";
+} else {
+    savefile = process.argv[2];
+}
 
 // FUNCTION list it lists all the tasks you have
 
